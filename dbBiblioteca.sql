@@ -26,6 +26,7 @@ primary key(idCliente)
 );
 
 
+
 create table tbLivros(
 idLivro int not null auto_increment,
 titulo varchar(100),
@@ -77,9 +78,9 @@ desc tbEscreve;
 -- Tipos de registro
 -- Caracter = 'Senac' 
 -- Numérico = se for numero inteiro (10), poe numero inteiro, se for real poe real = 20.35 e nao precisa colocar dentro de aspas simples
--- Campo data ( tem o campo data, com apostrofo, com ano, mes e dia 2024-05-16) 
+-- Campo data ( tem o campo data, com apóstrofo, com ano, mês e dia 2024-05-16) 
 -- Hora (coloca hora minuto e segundos)
--- Boolenado (nao precisa colocar em apostrofo)
+-- Boolenado (nao precisa colocar em apóstrofo)
 
 
 
@@ -114,6 +115,7 @@ insert into tbLivros(titulo,preco,estoque,idGenero)values('Imperfeitos',21.90,8,
 insert into tbLivros(titulo,preco,estoque,idGenero)values('Jantar Secreto',38.40,9,7);
 
 
+
 insert into tbVendas(data,total,idCLiente)values('2024-05-16',150.32,2);
 insert into tbVendas(data,total,idCLiente)values('2024-04-18',78.54,1);
 insert into tbVendas(data,total,idCLiente)values('2024-05-11',121.95,3);
@@ -138,5 +140,50 @@ select * from tbLivros;
 select * from tbVendas;
 select * from tbItens_Vendas;
 select * from tbEscreve;
+
+
+
+-- Alterando registros das tabelas
+
+update tbClientes set nome = 'Bartolomeu' where idCliente = 2;
+update tbClientes set nome = 'Maria Gabrielly' where idCliente = 3;
+
+update tbClientes set nome = 'Joao Pedro', telefone = '93561-995' where idCliente = 1;
+
+	
+select * from tbClientes;
+
+
+
+
+update tbLivros set titulo = 'É assim que começa', preco = 56.70, estoque = 9 , idGenero = 5
+where idLivro = 1; 
+
+
+update tbLivros set titulo = 'Jantar Secreto', preco = 67.89, estoque = 3, idGenero = 2
+where idLivro = 4; 
+
+
+
+select * from tbLivros;
+
+
+
+
+-- Apagando os registros da tabela
+
+--delete from tbItens_Vendas where idVenda = 2;
+-- delete from tbVendas where idCliente = 1;
+-- delete from tbClientes where idCliente = 1;
+
+
+select * from tbItens_Vendas;
+select * from tbVendas;
+select * from tbClientes;
+
+
+
+
+
 
 
