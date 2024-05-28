@@ -56,3 +56,11 @@ from tbProdutos;
  update tbProdutos set preco = preco * 1.10 where codProd = 3;
 
  select * from tbProdutos;
+
+
+-- calculo de 10% nos preços das tabelas
+ select preco * 0.90 as 'Desconto' from tbProdutos;
+
+
+ update tbProdutos set preco = preco * 0.20 where codProd =1;
+ 	select * from tbProdutos;
