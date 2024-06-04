@@ -39,4 +39,12 @@ SELECT * FROM PRODUTOS;
 -- pra ver os tipos sem repetição, campos sem repetição
  select distinct tipo from produtos;
  select * from PRODUTOS where tipo = 'INFORMATICA';
- select distinct tipo from produtos order by tipo,
+ select tipo from produtos order by tipo;
+
+
+ -- todos os campos e todos os registros dos campos
+ select * from produtos where valor >= 600;
+ select valor as 'valor' from produtos where valor >= 600.00;
+
+ -- busca por codigo
+ select * from produtos where codigo = 1;
