@@ -64,3 +64,18 @@ from tbProdutos;
 
  update tbProdutos set preco = preco * 0.20 where codProd =1;
  	select * from tbProdutos;
+
+
+
+
+
+
+
+
+-- tipos de busca (select)
+select * from tbProdutos;
+select descricao,preco from tbProdutos;
+ 
+-- clausula where / operadores 
+select * from tbProdutos where preco 
+
