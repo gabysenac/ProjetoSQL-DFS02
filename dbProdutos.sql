@@ -64,7 +64,7 @@ SELECT * FROM PRODUTOS;
 
  -- busca por nome
  -- nome like '%%'
- -- tipos de ultilizaçaõ da busca ( nome = campo, busca pela sentença de caracteres que tem, e te da a filtragem de nome, te da o nomes com as diferentes letras que voce escolher)
+ -- tipos de ultilizaçao da busca ( nome = campo, busca pela sentença de caracteres que tem, e te da a filtragem de nome, te da o nomes com as diferentes letras que voce escolher)
  -- (select * from produtos where tipo like '%i%'; todos os campos que começa com a letra i, no caso é o tipo que começa com a letra i. todos os tipos de campo que começa com a letra i)
 -- (quero buscar tudo que termina com s filtrando o tipo ainda)
 
@@ -88,11 +88,9 @@ SELECT * FROM PRODUTOS;
 --select * from produtos where valor >= 100 and valor <=300;
 
 -- ele vai trazer as coisas que estao dentro, onde o valor 'esta entre' 
+
 -- select * from produtos where valor between 100 and 300; 
 -- select * from produtos where valor not between 100 and 300; 
-
-
-
 
 
 
@@ -145,6 +143,46 @@ select * from produtos where nome not like '%Y%';
 -- 6. Exibir todos os produtos que se iniciem com nome 'MO' e tenham como tipo as letras 'MA'
 select * from produtos where nome like 'MO%' and tipo like '%MA%';
 
+
+
+
+-- busca ordenada
+select * from produtos order by tipo;
+
+
+-- busca por valores do maior para o menor
+select * from produtos order by valor desc;
+
+-- busca de tipo sem repeticao do maior para o menor
+select distinct tipo from produtos order by tipo;
+
+-- 
+select * from produtos order by valor desc limit 5;
+ 
+
+
+
+
+
+ -- Atividade Laboratório pagina 53
+
+ -- Escreva uma consulta que exiba os dados da tabela PRODUTOS na forma crescente pelo campo NOME
+	select * from produtos order by nome asc;
+
+
+
+ -- Escreva uma consulta que exiba o NOME dos produtos ordenados de forma descrescente e o VALOR de forma crescente
+ 	select nome,valor from produtos order by nome desc, valor asc;
+
+
+
+ -- Escreva uma consulta que exiba os tres produtos mais caros
+ 	select * from produtos order by valor desc limit 3;
+
+
+
+ -- Escreva uma consulta que exiba o VALOR do produto mais barato
+ 	select * from produtos order by valor limit 1;
 
 
  
