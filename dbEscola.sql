@@ -44,11 +44,13 @@ primary key (re),
 foreign key (idFunc) references tbFuncionarios(idFunc)
 );
 
+
 create table tbCursos(
 idCurso int not null auto_increment,
 nome varchar(100) not null,
 data date not null,
 hora time not null,
+re char(7) not null,
 primary key (idCurso),
 foreign key (re) references tbProfessores(re)
 );
@@ -73,18 +75,19 @@ idUsu int not null,
 idAluno int not null,
 data date,
 hora time,
-primary key(idMatr),
-foreign key(idCurso) references tbCursos(idCurso),
-foreign key(idTurma) references tbTurmas(idTurma),
-foreign key(idUsu) references tbUsuarios(idUsu),
-foreign key(idAluno) references tbAlunos(idAluno)
+primary key (idMatr),
+foreign key (idCurso) references tbCursos(idCurso),
+foreign key (idTurma) references tbTurmas(idTurma),
+foreign key (idUsu) references tbUsuarios(idUsu),
+foreign key (idAluno) references tbAlunos(idAluno)
 );
 
 
-desc tbCursos;
+
 desc tbTurmas;
 desc tbFuncionarios;
 desc tbAlunos;
 desc tbProfessores;
+desc tbCursos;
 desc tbUsuarios;
 desc tbMatriculas;
