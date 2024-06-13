@@ -22,6 +22,19 @@ primary key(idFunc)
 );
 
 
+create table tbSalas(
+idSala int not null auto_increment,
+descricao varchar(100),
+localizacao varchar(30),
+data datetime,
+hora datetime,
+primary key(idSala)
+
+
+
+);
+
+
 create table tbAlunos(
 idAluno int not null auto_increment,
 nome varchar(100) not null,
@@ -51,8 +64,11 @@ nome varchar(100) not null,
 data date not null,
 hora time not null,
 re char(7) not null,
+idSala int not null,
 primary key (idCurso),
-foreign key (re) references tbProfessores(re)
+foreign key (re) references tbProfessores(re),
+foreign key (idSala) references tbSalas(idSala)
+
 );
 
 
