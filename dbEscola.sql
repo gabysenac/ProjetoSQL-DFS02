@@ -29,9 +29,6 @@ localizacao varchar(30),
 data datetime,
 hora datetime,
 primary key(idSala)
-
-
-
 );
 
 
