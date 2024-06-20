@@ -119,7 +119,7 @@ where med.nome like '%n%';
 
 
 
-
+-- nome do paciente que cada medico atendeu, com base na pesquisa de cima. juntando com o left e right
 select pac.nome as 'Nome do Paciente',
 med.nome as 'Nome do Medico'
 from tbMedico as med 
