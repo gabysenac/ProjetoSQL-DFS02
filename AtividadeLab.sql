@@ -433,10 +433,91 @@ select * from tbTitulosArtista;
 
 
 
-
 -- Atividade 2, pagina 88 e 89
--- Selecione o nome dos CDs e o nome da gravadora de cada CD
--- Selecione o nome dos CDs e o nome da categoria de cada CD
--- Selecione o nome dos CDs, o nome das gravadoras de cada CD e o nome da categoria de cada CD
--- Selecione o nome dos clientes e os titulos dos CDs vendidos em cada pedido que o cliente fez
--- Selecione o nome do funcionario, numero, data e valor dos pedidos que ese funcionario registrou, alem do nome do cliente
+-- 1 Selecione o nome dos CDs e o nome da gravadora de cada CD
+select tit.nome as 'CD',
+grav.nome as 'Gravadora' from tbTitulos as tit
+inner join tbGravadoras as grav on tit.codGrav = grav.codGrav;
+
+
+
+
+-- 2 Selecione o nome dos CDs e o nome da categoria de cada CD
+select tit.nome as 'CD',
+cat.nome as 'Categorias' from tbTitulos as tit
+inner join tbCategorias as cat on tit.codCat = cat.codCat;
+
+
+
+
+-- 3 Selecione o nome dos CDs, o nome das gravadoras de cada CD e o nome da categoria de cada CD
+select tit.nome as 'CD',
+grav.nome as 'Gravadoras',
+cat.nome as 'Categorias' from tbTitulos as tit
+inner join tbGravadoras as grav on tit.codGrav = grav.codGrav
+inner join tbCategorias as cat on tit.codCat = cat.codCat;
+
+
+
+-- 4 Selecione o nome dos clientes e os titulos dos CDs vendidos em cada pedido que o cliente fez
+select cli.nome as 'Nome dos clientes',
+tit.nome as 'Titulos dos CDs vendidos' from tbTitulosPedido as titped
+inner join tbTitulos as tit on titped.codTit = tit.codTit
+inner join tbPedidos as ped on titped.numPed = ped.numPed;
+inner join tbClientes as cli on ped.codCli = cli.codCli
+
+
+
+-- 5 Selecione o nome do funcionario, numero, data e valor dos pedidos que ese funcionario registrou, alem do nome do cliente que esta fazendo o pedido
+
+
+
+
+
+
+
+
+-- 6 Selecione o nome dos funcionarios e o nome de todos os dependentes de casa funcionario
+
+
+
+
+
+
+
+
+
+-- 7 Selecione o nome dos clientes e o nome dos conjuges de cada cliente
+
+
+
+
+
+
+
+
+-- 8 Selecione o nome de todos os clientes. Se estes possuem conjuges, mostrar os nomes de seus conjuges tambem
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- 9 Selecione o nome do cliente, nome do conjuge, numero do pedido que cada cliente fez, valor de cada pedido que cada cliente fez e codigo do funcionario que atendeu a cada pedido
+
+
+
+
+
+
+-- atividade Laboratorio pagina 101
+-- 1 Exiba quantos pedidos cada cliente fez
