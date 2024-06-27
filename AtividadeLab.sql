@@ -117,6 +117,9 @@ foreign key (codFunc) references tbFuncionarios(codFunc)
 );
 
 
+
+
+
 create table tbTitulosPedido(
 qtdCd int not null check (qtdCd >= 1),
 valCd decimal(9,2) not null check (valCd >0),
@@ -406,9 +409,6 @@ insert into tbTitulosArtista(codTit,codArt)
 
 
 
-
-
-
 select * from tbArtistas;
 select * from tbGravadoras;
 select * from tbCategorias;
@@ -459,60 +459,69 @@ inner join tbCategorias as cat on tit.codCat = cat.codCat;
 
 
 
+
 -- 4 Selecione o nome dos clientes e os titulos dos CDs vendidos em cada pedido que o cliente fez
 select cli.nome as 'Nome dos clientes',
 tit.nome as 'Titulos dos CDs vendidos' from tbTitulosPedido as titped
 inner join tbTitulos as tit on titped.codTit = tit.codTit
-inner join tbPedidos as ped on titped.numPed = ped.numPed;
-inner join tbClientes as cli on ped.codCli = cli.codCli
+inner join tbPedidos as ped on titped.numPed = ped.numPed
+inner join tbClientes as cli on ped.codCli = cli.codCli;
 
 
 
 -- 5 Selecione o nome do funcionario, numero, data e valor dos pedidos que ese funcionario registrou, alem do nome do cliente que esta fazendo o pedido
-
-
-
+select func.nome, ped.numPed,
+ped.dataPed, ped.valPed, cli.nome from tbPedidos as ped 
+inner join tbFuncionarios as func on ped.codFunc = func.codFunc
+inner join tbClientes as cli on ped.codCli = cli.codCli;
 
 
 
 
 
 -- 6 Selecione o nome dos funcionarios e o nome de todos os dependentes de casa funcionario
+select func.nome as 'Funcionarios',
+dep.nome as 'Dependentes' from tbDependentes as dep 
+inner join tbFuncionarios as func on dep.codFunc = func.codFunc;
+ 
 
 
 
 
 
-
-
-
-
--- 7 Selecione o nome dos clientes e o nome dos conjuges de cada cliente
-
-
-
+-- 7 Selecione o nome dos clientes e o nome dos conjuges de cada cliente 
+select cli.nome as "Nome do Cliente",
+conj.nome as "Nome do Conjuge" from tbConj as conj  
+inner join tbClientes as cli on conj.codCli = cli.codCli;
+ 
 
 
 
 
 
 -- 8 Selecione o nome de todos os clientes. Se estes possuem conjuges, mostrar os nomes de seus conjuges tambem
-
-
-
-
-
-
-
-
-
-
+select cli.nome as "Nome do Cliente",
+conj.nome as "Nome do Conjuge" from tbConj as conj  
+inner join tbClientes as cli on conj.codCli = cli.codCli
+where conj.nome like '%%';
 
 
 
 
 
 -- 9 Selecione o nome do cliente, nome do conjuge, numero do pedido que cada cliente fez, valor de cada pedido que cada cliente fez e codigo do funcionario que atendeu a cada pedido
+select cli.nome as "Nome do Cliente",
+conj.nome as "Nome do Conj",
+ped.numPed as "Numero do Pedido",
+ped.valPed as "Valor do Pedido",
+func.codFunc as "Cod Funcionario"  from tbPedidos as ped 
+right join tbClientes as cli on ped.numPed = cli.codCli
+right join tbConj as conj on ped.numPed = conj.codConj
+inner join tbFuncionarios as func on ped.codFunc = func.codFunc;
+
+
+
+
 
 
 
@@ -521,3 +530,52 @@ inner join tbClientes as cli on ped.codCli = cli.codCli
 
 -- atividade Laboratorio pagina 101
 -- 1 Exiba quantos pedidos cada cliente fez
+
+
+select count(qtdCd) as 'quatidade vendida' from tbTitulosPedido;
+
+
+
+
+
+-- 2 Exiba quantos CDs possui cada categoria
+select count(*) as 'quantidade de cd' from tbTitulos; 
+
+
+
+-- 3 Exiba quantos CDs possui casa gravadora
+select count()
+
+
+
+-- 4 Exiba quantos pedidos cada funcionário atendeu
+
+
+
+
+-- 5 Exiba quantos dependentes tem cada funcionário
+
+
+
+
+-- 6 Exiba quantos pedidos cada cliente fez, mostrando o nome dos clientes
+
+
+
+
+-- 7 Exiba quantos CDs possui cada categoria, mostrando o nome das mesmas
+
+
+
+
+-- 8 Exiba quantos CDs possui cada gravadora, mostrando o nome das mesmas
+
+
+
+
+-- 9 Exiba quantos pedidos cada funcionário atendeu, mostrando o nome dos funcionários 
+
+
+
+
+-- 10 Exiba quantos dependentes cada funcionário possui, mostrando seus nomes  
